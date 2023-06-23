@@ -3,6 +3,7 @@ class AppWriteConstants {
   static const String projectID = '649309357852606f374e';
   static const String endPoint =
       'https://cloud.appwrite.io/console/project-649309357852606f374e/overview/platforms';
+  static const String usersCollection = ''; //Add this later
 }
 
 
