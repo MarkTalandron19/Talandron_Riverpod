@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:twitter_clone/constants/appwrite_constants.dart';
 import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/core/provider.dart';
+import 'package:twitter_clone/core/providers.dart';
 import 'package:twitter_clone/models/models.dart';
 
 final userProvider = Provider((ref) {

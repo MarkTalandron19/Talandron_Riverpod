@@ -3,7 +3,7 @@ import 'package:appwrite/models.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:twitter_clone/core/core.dart';
-import 'package:twitter_clone/core/provider.dart';
+import 'package:twitter_clone/core/providers.dart';
 
 // want to signup, want to get user account -> Account
 // want to access user related data -> model.Account
