@@ -16,6 +16,16 @@ final tweetControllerProvider =
       storageAPI: ref.watch(StorageAPIProvider));
 });
 
+final getTweetsProvider = FutureProvider((ref) async {
+  final tweetController = ref.watch(tweetControllerProvider.notifier);
+  return tweetController.getTweets();
+});
+
+final getLatestProvider = StreamProvider((ref) {
+  final tweetAPI = ref.watch(tweetApiProvider);
+  return tweetAPI.getLatestTweet();
+});
+
 class TweetController extends StateNotifier<bool> {
   final TweetAPI _tweetAPI;
   final StorageAPI _storageAPI;
@@ -28,6 +38,11 @@ class TweetController extends StateNotifier<bool> {
         _tweetAPI = tweetAPI,
         _storageAPI = storageAPI,
         super(false);
+
+  Future<List<Tweet>> getTweets() async {
+    final tweetList = await _tweetAPI.getTweets();
+    return tweetList.map((tweet) => Tweet.fromMap(tweet.data)).toList();
+  }
 
   void shareTweet({
     required List<File> images,
@@ -65,12 +80,12 @@ class TweetController extends StateNotifier<bool> {
         text: text,
         hashtags: hashtags,
         link: link,
-        imageLinks: [],
+        imageLinks: const [],
         uid: user.uid,
         tweetType: TweetType.image,
         tweetedAt: DateTime.now(),
-        likes: [],
-        commentIds: [],
+        likes: const [],
+        commentIds: const [],
         id: '',
         reshareCount: 0);
     final res = await _tweetAPI.shareTweet(tweet);
@@ -89,12 +104,12 @@ class TweetController extends StateNotifier<bool> {
         text: text,
         hashtags: hashtags,
         link: link,
-        imageLinks: [],
+        imageLinks: const [],
         uid: user.uid,
         tweetType: TweetType.text,
         tweetedAt: DateTime.now(),
-        likes: [],
-        commentIds: [],
+        likes: const [],
+        commentIds: const [],
         id: '',
         reshareCount: 0);
     final res = await _tweetAPI.shareTweet(tweet);
