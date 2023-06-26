@@ -38,16 +38,17 @@ class TweetCard extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          margin: const EdgeInsets.all(10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(context, UserProfileView.route(user));
-                            },
-                            child: CircleAvatar(
-                            backgroundImage: NetworkImage(user.profilePic),
-                            radius: 35,
-                          ),)
-                        ),
+                            margin: const EdgeInsets.all(10),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context, UserProfileView.route(user));
+                              },
+                              child: CircleAvatar(
+                                backgroundImage: NetworkImage(user.profilePic),
+                                radius: 35,
+                              ),
+                            )),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +173,7 @@ class TweetCard extends ConsumerWidget {
                                         ref
                                             .read(tweetControllerProvider
                                                 .notifier)
-                                            .likeTweet(tweet, user);
+                                            .likeTweet(tweet, currentUser);
                                         return !isLiked;
                                       },
                                       isLiked:
